@@ -1,0 +1,21 @@
+
+==============================
+
+Some examples of tree usage in programming are:
+1. The DOM model.
+2. Situation analysis in artificial intelligence.
+3. File folders in operating systems.
+
+==============================
+
+BFS :- Breadth-first search (BFS) is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored.
+
+Algorithm :-
+1. Visit Root Node and put into a queue(In Array).
+2. Iterate over the queue named Array until its empty.
+3. Inside the Loop :- 
+    - Node = queue.shift() // It remove element from the first/begining.
+    - Push data into result array.
+    - Insert left Node of tree into  Queue if it exists.
+    - Insert right Node of tree into Queue if it exists.
+4. Return Resultant Array after all elements have been processed.
