@@ -1,6 +1,8 @@
 class Node {
 	constructor(data) {
-		(this.data = data), (this.left = null), (this.right = null);
+		this.data = data;
+		this.left = null;
+		this.right = null;
 	}
 }
 
@@ -8,7 +10,7 @@ class Tree {
 	constructor(root = null) {
 		this.root = root;
 	}
-	// tranversal BFS A -> B -> C -> D -> E -> F -> G
+	// Traversal: BFS A -> B -> C -> D -> E -> F -> G
 	BFS() {
 		let queue = [this.root];
 		let result = [];
@@ -20,7 +22,41 @@ class Tree {
 		}
 		return result;
 	}
+	// Traversal: DFS: Recursion -> Stack
+	// traversal preorder A -> B -> D -> E -> C -> F -> G
+	preOrder() {
+		let result = [];
+		function traverse(currentNode) {
+			result.push(currentNode.data);
+			if (currentNode.left) traverse(currentNode.left);
+			if (currentNode.right) traverse(currentNode.right);
+		}
+
+		traverse(this.root);
+		return result;
+	}
+	// traversal postorder A -> D -> E -> B -> F -> G -> C
+	postOrder() {
+		let result = [];
+		function traversal(currentNode) {
+			if (currentNode.left) traversal(currentNode.left);
+			if (currentNode.right) traversal(currentNode.right);
+			result.push(currentNode.data);
+		}
+		traversal(this.root);
+		return result;
+	}
 	// traversal inorder
+	inOrder() {
+		let result = [];
+		function traversal(currentNode) {
+			if (currentNode.left) traversal(currentNode.left);
+			result.push(currentNode.data);
+			if (currentNode.right) traversal(currentNode.right);
+		}
+		traversal(this.root);
+		return result;
+	}
 }
 
 const tree = new Tree();
@@ -32,3 +68,6 @@ tree.root.left.right = new Node('E');
 tree.root.right.left = new Node('F');
 tree.root.right.right = new Node('G');
 console.log(tree.BFS());
+console.log(tree.preOrder());
+console.log(tree.postOrder());
+console.log(tree.inOrder());
